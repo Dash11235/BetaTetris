@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Model {
+
+    private char[][] field;
+
+    public Model(){
+        field = new char[20][10];
+    }
+
+    public void addPiece(int shape){
+        switch(shape) {
+            case 0:
+                setX(0, 4);
+                setX(0, 5);
+                setX(0, 6);
+                setX(1, 4);
+                break;
+            case 1:
+                setX(0, 4);
+                setX(0, 5);
+                setX(0, 6);
+                setX(1, 6);
+                break;
+            case 2:
+                setX(0, 3);
+                setX(0, 4);
+                setX(0, 5);
+                setX(0, 6);
+                break;
+            case 3:
+                setX(0, 4);
+                setX(0, 5);
+                setX(1, 4);
+                setX(1, 5);
+                break;
+            case 4:
+                setX(1, 4);
+                setX(1, 5);
+                setX(0, 5);
+                setX(0, 6);
+                break;
+            case 5:
+                setX(0, 4);
+                setX(0, 5);
+                setX(1, 5);
+                setX(1, 6);
+                break;
+            case 6:
+                setX(1, 4);
+                setX(1, 5);
+                setX(1, 6);
+                setX(0, 5);
+                break;
+        }
+        for(int i = 0; i < field.length; i++){
+            System.out.println(Arrays.toString(field[i]));
+        }
+    }
+
+    private void setX(int y, int x){
+        field[y][x] = 'X';
+    }
+
+}
