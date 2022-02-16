@@ -1,0 +1,59 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Model {
+
+    private char[][] field;
+    private Map<Integer, Character> colorMap;
+    private Map<Integer, int[][]> shapeMap;
+
+    public Model() {
+        field = new char[20][10];
+        for(char[] arr : field){
+            Arrays.fill(arr, ' ');
+        }
+
+        colorMap = new HashMap<>() {{
+            put(0, 'C');
+            put(1, 'B');
+            put(2, 'O');
+            put(3, 'Y');
+            put(4, 'G');
+            put(5, 'M');
+            put(6, 'R');
+        }};
+        shapeMap = new HashMap<>() {{
+            put(0, new int[][]{{0, 4}, {0, 5}, {0, 6}, {1, 4}});
+            put(1, new int[][]{{0, 4}, {0, 5}, {0, 6}, {1, 6}});
+            put(2, new int[][]{{0, 3}, {0, 4}, {0, 5}, {0, 6}});
+            put(3, new int[][]{{0, 4}, {0, 5}, {1, 4}, {1, 5}});
+            put(4, new int[][]{{1, 4}, {1, 5}, {0, 5}, {0, 6}});
+            put(5, new int[][]{{0, 4}, {0, 5}, {1, 5}, {1, 6}});
+            put(6, new int[][]{{1, 4}, {1, 5}, {1, 6}, {0, 5}});
+        }};
+    }
+
+    public char[][] addPiece(int shape, int color, int y, int x, int rot) {
+        /**
+         * ADD ROTATION
+         */
+        for (int[] ar : shapeMap.get(shape)) {
+            field[ar[0]+y][ar[1]+x] = colorMap.get(color);
+        }
+        for(int i = 0; i < field.length; i++){
+            System.out.println(Arrays.toString(field[i]));
+        }
+        System.out.println("\n\n");
+        return field;
+    }
+
+    public void remPiece(int shape, int y, int x, int rot) {
+        /**
+         * ADD ROTATION
+         */
+        for (int[] ar : shapeMap.get(shape)) {
+            field[ar[0]+y][ar[1]+x] = ' ';
+        }
+    }
+}
